@@ -1,0 +1,40 @@
+mysql:
+  image: mysql/mysql-server:latest
+
+  environment:
+    MYSQL_ROOT_PASSWORD: secretpassword
+    MYSQL_DATABASE: openfire
+    MYSQL_USER: openfireuser
+    MYSQL_PASSWORD: anothersecretpassword
+
+  volumes:
+    - ./mysql_data:/var/lib/mysql:rw
+
+xmpp:
+  image: quantumobject/docker-openfire
+
+  links:
+    - mysql:db
+
+  volumes:
+    - ./openfire_config:/etc/openfire/:rw
+    
+  # For use with reverse proxy like jwilder/nginx-reverse
+  #environment:
+  #  VIRTUAL_HOST: xmpp.example.com
+  #  VIRTUAL_PORT: 9090
+  # Otherwise forward port 9090
+
+  ports:
+    # To access web interface without reverse proxy:
+    #- "9090:9090"
+    # Ports for xmpp, etc. (see web interface for more information)
+    - "5222:5222"
+    - "5269:5269"
+    - "5223:5223"
+    - "7443:7443"
+    - "7777:7777"
+    - "7070:7070"
+    - "5229:5229"
+    - "5275:5275"
+
