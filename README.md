@@ -50,7 +50,7 @@ where MySQL user will be openfireuser with password for the database openfire at
 
 When done configuring OpenFire and adding some users you can use the internal web client :
 
-  - ** http://host_ip:9090/sparkweb/ **
+  - **http://host_ip:9090/sparkweb/**
 
 To access the container from the server that the container is running :
 
@@ -63,17 +63,17 @@ note: -p 5000-6000:5000-6000/tcp -p 5000-6000:5000-6000/udp  this only needed if
 To keep the **configuration** on container removal you can mount the volume using **-v /host/path/to/config:/etc/openfire**
 The full command would then be
 
-  $ docker run -d -p 9090:9090 -p 5222:5222 -p 5269:5269 \
-    -p 5223:5223 -p 7443:7443 -p 7777:7777 -p 7070:7070 -p 5229:5229 -p 5275:5275 \
-    -v /host/path/to/config:/etc/openfire \
-    --link some-mysql:db quantumobject/docker-openfire
+    $ docker run -d -p 9090:9090 -p 5222:5222 -p 5269:5269 \
+      -p 5223:5223 -p 7443:7443 -p 7777:7777 -p 7070:7070 -p 5229:5229 -p 5275:5275 \
+      -v /host/path/to/config:/etc/openfire \
+      --link some-mysql:db quantumobject/docker-openfire
   
 To keep the database on removal you can use **-v /path/to/mysql/data:/var/lib/mysql**
 The full command would then be
 
-  $ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=mysecretpassword  -e MYSQL_DATABASE=openfire \
-    -e MYSQL_USER=openfireuser -e MYSQL_PASSWORD=openfirepasswd -d \
-    -v /path/to/mysql/data:/var/lib/mysql mysql
+    $ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=mysecretpassword  -e MYSQL_DATABASE=openfire \
+      -e MYSQL_USER=openfireuser -e MYSQL_PASSWORD=openfirepasswd -d \
+      -v /path/to/mysql/data:/var/lib/mysql mysql
     
 For more information on Volumes see
 [docs.docker.com/engine/userguide/containers/dockervolumes/][9]
