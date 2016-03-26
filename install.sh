@@ -3,7 +3,7 @@
 # Install openfire
 filename="openfire_4.0.2_all.deb"
 wget -O "$filename" http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_4.0.2_all.deb
-dpkg -i "$filename"
+dpkg -i "$filename" || exit 1
 rm "$filename"
 
 # Install sparkweb
