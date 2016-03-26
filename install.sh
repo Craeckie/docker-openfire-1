@@ -11,7 +11,7 @@ filename="sparkweb_0_9_0.tar.gz"
 wget -O "$filename" http://www.igniterealtime.org/downloadServlet?filename=sparkweb/sparkweb_0_9_0.tar.gz
 tar -xvf "$filename"
 rm "$filename"
-base_path="/usr/share/openfire/plugins/admin/webapp/"
+base_path="/var/lib/openfire/plugins/admin/webapp/"
 mv sparkweb "$base_path"
 mv "$base_path/sparkweb/SparkWeb.html"  "$base_path/sparkweb/index.html"
 

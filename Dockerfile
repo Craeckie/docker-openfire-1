@@ -33,8 +33,8 @@ COPY run.sh /etc/service/openfire/run
 RUN chmod +x /etc/service/openfire/run 
 
 
-# Contains the configuration, e.g. Mysql host, credentials, ..
-VOLUME /etc/openfire
+# Contains the configuration and plugins
+VOLUME /etc/openfire /var/lib/openfire/plugins
 
 # Ports to access the server, not all of them needed in all cases
 EXPOSE 7070 7443 7777 9090 9091 5000-6000/udp 5000-6000/tcp

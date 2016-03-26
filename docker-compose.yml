@@ -18,6 +18,7 @@ xmpp:
 
   volumes:
     - ./openfire_config:/etc/openfire/:rw
+    - ./openfire_plugins:/var/lib/openfire/plugins/:rw
     
   # For use with reverse proxy like jwilder/nginx-reverse
   #environment:
