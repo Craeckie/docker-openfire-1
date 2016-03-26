@@ -1,18 +1,19 @@
 #!/bin/bash
 
 # Install openfire
-wget http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_3.10.2_all.deb
-mv downloadServlet?filename=openfire%2Fopenfire_3.10.2_all.deb openfire_3.10.2_all.deb
-dpkg -i openfire_3.10.2_all.deb
-rm openfire_3.10.2_all.deb
+filename="openfire_4.0.2_all.deb"
+wget -O "$filename" http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_4.0.2_all.deb
+dpkg -i "$filename"
+rm "$filename"
 
 # Install sparkweb
-wget http://www.igniterealtime.org/downloadServlet?filename=sparkweb/sparkweb_0_9_0.tar.gz
-mv downloadServlet?filename=sparkweb%2Fsparkweb_0_9_0.tar.gz sparkweb_0_9_0.tar.gz
-tar -xvf sparkweb_0_9_0.tar.gz
-rm sparkweb_0_9_0.tar.gz
-mv sparkweb /usr/share/openfire/plugins/admin/webapp/
-mv /usr/share/openfire/plugins/admin/webapp/sparkweb/SparkWeb.html  /usr/share/openfire/plugins/admin/webapp/sparkweb/index.html
+filename="sparkweb_0_9_0.tar.gz"
+wget -O "$filename" http://www.igniterealtime.org/downloadServlet?filename=sparkweb/sparkweb_0_9_0.tar.gz
+tar -xvf "$filename"
+rm "$filename"
+base_path="/usr/share/openfire/plugins/admin/webapp/"
+mv sparkweb "$base_path"
+mv "$base_path/sparkweb/SparkWeb.html"  "$base_path/sparkweb/index.html"
 
 # Save configuration files for volume
 mkdir -p "$CONFIG_BU"
