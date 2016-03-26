@@ -29,7 +29,7 @@ RUN chmod +x /etc/my_init.d/init.sh
 
 # Starts openfire when container is started
 RUN mkdir /etc/service/openfire
-COPY openfire.sh /etc/service/openfire/run
+COPY run.sh /etc/service/openfire/run
 RUN chmod +x /etc/service/openfire/run 
 
 
