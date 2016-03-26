@@ -9,7 +9,7 @@ MAINTAINER Josia Roßkopf "josia-internet@rosskopfs.de"
 #add repository and update the container
 #Installation of nesesary package/software for this containers...
 RUN apt-get update && apt-get dist-upgrade -y \
-                    && apt-get install -y -q openjdk-7-jre \
+                    && apt-get install -y -q openjdk-8-jre \
                     && apt-get clean \
                     && apt-get autoremove -y \
                     && rm -rf /tmp/* /var/tmp/*  \
@@ -38,3 +38,4 @@ VOLUME /etc/openfire /var/lib/openfire/plugins
 
 # Ports to access the server, not all of them needed in all cases
 EXPOSE 7070 7443 7777 9090 9091 5000-6000/udp 5000-6000/tcp
+
