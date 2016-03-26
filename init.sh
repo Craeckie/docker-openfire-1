@@ -11,3 +11,10 @@ else
         update-locale
         date > /etc/configured
 fi
+
+if [ -f /etc/openfire/openfire.xml ]; then
+  echo 'Configuration files in place!'
+else
+  echo "Copying standard config files to original place"
+  cp -r "$CONFIG_BU/*" "/etc/openfire"
+fi
