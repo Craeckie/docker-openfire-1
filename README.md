@@ -62,12 +62,12 @@ note: -p 5000-6000:5000-6000/tcp -p 5000-6000:5000-6000/udp  this only needed if
 
 ## Persistence
 
-To keep the **configuration** on container removal you can mount the volume using `-v /host/path/to/config:/etc/openfire`
+To keep the **configuration and plugins** on container removal you can mount the volumes using `-v /host/path/to/config:/etc/openfire -v /host/path/to/plugins:/var/lib/openfire/plugins`
 The full command would then be
 
     $ docker run -d -p 9090:9090 -p 5222:5222 -p 5269:5269 \
       -p 5223:5223 -p 7443:7443 -p 7777:7777 -p 7070:7070 -p 5229:5229 -p 5275:5275 \
-      -v /host/path/to/config:/etc/openfire \
+      -v /host/path/to/config:/etc/openfire -v /host/path/to/plugins:/var/lib/openfire/plugins \
       --link some-mysql:db quantumobject/docker-openfire
   
 To keep the database on removal you can use `-v /path/to/mysql/data:/var/lib/mysql`
