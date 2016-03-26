@@ -15,6 +15,7 @@ mv sparkweb /usr/share/openfire/plugins/admin/webapp/
 mv /usr/share/openfire/plugins/admin/webapp/sparkweb/SparkWeb.html  /usr/share/openfire/plugins/admin/webapp/sparkweb/index.html
 
 # Save configuration files for volume
+mkdir -p "$CONFIG_BU"
 cp -r /etc/openfire/* "$CONFIG_BU"
 
 # Clear some data before saving this layer
