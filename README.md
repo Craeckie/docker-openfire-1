@@ -40,6 +40,8 @@ Them link and run the  openfire container:
 
 where when been ask for database need to replace localhost for db.
 
+See `docker-compose.yml` for use with **Docker-compose**.
+
 ## Accessing the openfire applications:
 
 After that check with your browser at addresses plus the port assigined by docker or you:
