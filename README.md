@@ -60,7 +60,7 @@ note: -p 5000-6000:5000-6000/tcp -p 5000-6000:5000-6000/udp  this only needed if
 
 ## Persistence
 
-To keep the configuration on container restart you can mount the volume using **-v /host/path/to/config:/etc/openfire**
+To keep the **configuration** on container removal you can mount the volume using **-v /host/path/to/config:/etc/openfire**
 The full command would then be
 
   $ docker run -d -p 9090:9090 -p 5222:5222 -p 5269:5269 \
@@ -68,6 +68,16 @@ The full command would then be
     -v /host/path/to/config:/etc/openfire \
     --link some-mysql:db quantumobject/docker-openfire
   
+To keep the database on removal you can use **-v /path/to/mysql/data:/var/lib/mysql**
+The full command would then be
+
+  $ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=mysecretpassword  -e MYSQL_DATABASE=openfire \
+    -e MYSQL_USER=openfireuser -e MYSQL_PASSWORD=openfirepasswd -d \
+    -v /path/to/mysql/data:/var/lib/mysql mysql
+    
+For more information on Volumes see
+[docs.docker.com/engine/userguide/containers/dockervolumes/][9]
+
 
 ## More Info
 
@@ -87,3 +97,4 @@ For additional info about us and our projects check our site [www.quantumobject.
 [6]:http://www.quantumobject.com:9090
 [7]:http://www.igniterealtime.org/projects/sparkweb/index.jsp
 [8]:http://www.quantumobject.com/
+[9]:https://docs.docker.com/engine/userguide/containers/dockervolumes/
