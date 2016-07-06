@@ -17,8 +17,9 @@ xmpp:
     - mysql:db
 
   volumes:
-    - ./openfire_config:/etc/openfire/:rw
+    - ./openfire_keys:/usr/share/openfire/resources/security
     - ./openfire_plugins:/var/lib/openfire/plugins/:rw
+    - ./openfire_config:/etc/openfire/:rw
     
   # For use with reverse proxy like jwilder/nginx-reverse
   #environment:

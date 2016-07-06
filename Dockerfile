@@ -8,13 +8,13 @@ MAINTAINER Josia Roßkopf "josia-internet@rosskopfs.de"
 
 #add repository and update the container
 #Installation of nesesary package/software for this containers...
-RUN apt-get update && apt-get dist-upgrade -y \
+RUN echo "Acquire::http::Proxy \"http://sanemind.de:3142\";" | tee /etc/apt/apt.conf.d/01proxy \
+    apt-get update && apt-get dist-upgrade -y \
                     && apt-get install --no-install-recommends -y -q openjdk-7-jre-headless openjdk-8-jre-headless \
                     && apt-get clean \
                     && apt-get autoremove -y \
                     && rm -rf /tmp/* /var/tmp/*  \
                     && rm -rf /var/lib/apt/lists/*
-                    
 ENV CONFIG_BU /root/etc-openfire
 
 # Installs openfire and sparkweb
